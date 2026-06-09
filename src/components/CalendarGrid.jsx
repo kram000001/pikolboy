@@ -25,6 +25,9 @@ const [showBooking,setShowBooking]=useState(false);
   <div className="scheduleHeader">
    <h2>Court Schedule</h2>
    <p>{dateLabel}</p>
+<div className="dateWrapper">
+
+
 <input
  className="datePicker"
  type="date"
@@ -33,7 +36,15 @@ const [showBooking,setShowBooking]=useState(false);
  onClick={(e)=>{
    e.currentTarget.showPicker?.()
  }}
-/>  </div>
+/>
+
+
+<span className="calendarIcon">
+📅
+</span>
+
+
+</div> </div>
 <div className="slotsList">
 
 {hours.map(hour=>{
