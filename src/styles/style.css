@@ -349,32 +349,29 @@ button,input,select{
 
 
 /* DATE PICKER */
-
-
 .datePicker{
 
- width:100%;
+width:100%;
 
- padding:14px;
-
-
- border-radius:18px;
+padding:14px 45px 14px 15px;
 
 
- background:
-
- rgba(255,255,255,.08);
+border-radius:18px;
 
 
- border:
-
- 1px solid rgba(255,255,255,.18);
-
-
- color:white;
+background:
+rgba(255,255,255,.12);
 
 
- cursor:pointer;
+border:
+1px solid rgba(255,255,255,.25);
+
+
+color:white;
+
+
+font-size:16px;
+
 
 }
 
@@ -1118,4 +1115,196 @@ min-height:70px;
 
 
 }
+/* FIX DATE ICON MOBILE + DESKTOP */
+
+.datePicker{
+
+position:relative;
+
+color:white !important;
+
+}
+
+
+.datePicker::-webkit-calendar-picker-indicator{
+
+opacity:1 !important;
+
+display:block !important;
+
+cursor:pointer;
+
+
+filter:
+brightness(0)
+invert(1);
+
+
+width:22px;
+
+height:22px;
+
+
+}
+
+
+
+.datePicker::-webkit-inner-spin-button,
+.datePicker::-webkit-clear-button{
+
+display:none;
+
+}
+
+
+/* iPhone Safari fix */
+
+@supports (-webkit-touch-callout: none) {
+
+
+.datePicker{
+
+min-height:50px;
+
+}
+
+
+.datePicker::-webkit-calendar-picker-indicator{
+
+opacity:1;
+
+}
+
+
+}
+}
+/* BOOKING POPUP */
+
+
+.bookingModal{
+
+
+position:fixed;
+
+inset:0;
+
+
+background:
+rgba(0,0,0,.55);
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+z-index:999;
+
+
+padding:20px;
+
+
+}
+
+
+
+.modalBox{
+
+
+width:100%;
+
+max-width:380px;
+
+
+background:
+
+rgba(255,255,255,.15);
+
+
+backdrop-filter:
+blur(20px);
+
+
+border-radius:25px;
+
+
+padding:25px;
+
+
+text-align:center;
+
+
+border:
+1px solid rgba(255,255,255,.25);
+
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.4);
+
+
+}
+
+
+
+.modalBox h2{
+
+margin-top:0;
+
+}
+
+
+
+.modalBox p{
+
+color:#e2e8f0;
+
+line-height:1.5;
+
+}
+
+
+
+.modalBox button{
+
+
+width:100%;
+
+
+padding:13px;
+
+
+border-radius:15px;
+
+
+border:none;
+
+
+margin-top:10px;
+
+
+cursor:pointer;
+
+
+font-weight:700;
+
+
+background:#2563eb;
+
+
+color:white;
+
+
+}
+
+
+
+.modalBox .closeModal{
+
+
+background:
+rgba(255,255,255,.2);
+
+
 }

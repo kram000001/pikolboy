@@ -8,8 +8,11 @@ function hideName(name){
 
 export default function CalendarGrid(){
  const [bookings,setBookings]=useState([]);
- const [selectedDate,setSelectedDate]=useState(new Date().toISOString().split("T")[0]);
+const [selectedDate,setSelectedDate]=useState(
+ new Date().toISOString().split("T")[0]
+);
 
+const [showBooking,setShowBooking]=useState(false);
  useEffect(()=>{
   return listenBookings(data=>setBookings(data));
  },[]);
@@ -31,15 +34,139 @@ export default function CalendarGrid(){
    e.currentTarget.showPicker?.()
  }}
 />  </div>
+<div className="slotsList">
 
-  <div className="slotsList">
-  {hours.map(hour=>{
-   const booked=bookings.find(b=>b.date===selectedDate && b.time===hour);
-   return <div key={hour} className={booked?"slot booked":"slot available"}>
-    <div className="time">{hour}</div>
-    <div className="status">{booked?"Reserved • "+hideName(booked.name):"Open for booking"}</div>
-   </div>
-  })}
-  </div>
+{hours.map(hour=>{
+
+const booked =
+bookings.find(
+b=>b.date===selectedDate && b.time===hour
+);
+
+
+return (
+
+<div
+
+key={hour}
+
+onClick={()=>{
+
+if(!booked){
+
+setShowBooking(true);
+
+}
+
+}}
+
+className={
+booked
+?
+"slot booked"
+:
+"slot available"
+}
+
+>
+
+
+<div className="time">
+
+{hour}
+
+</div>
+
+
+<div className="status">
+
+{
+booked
+?
+"Reserved • "+hideName(booked.name)
+:
+"Open for booking"
+}
+
+</div>
+
+
+</div>
+
+);
+
+})}
+
+</div>
+
+
+
+{
+showBooking && (
+
+<div className="bookingModal">
+
+
+<div className="modalBox">
+
+
+<h2>
+📩 Reservation
+</h2>
+
+
+<p>
+
+Please message our Facebook page
+for reservations.
+
+</p>
+
+
+
+<button
+
+onClick={()=>{
+
+window.open(
+"https://www.facebook.com/",
+"_blank"
+)
+
+}}
+
+>
+
+Message Facebook Page
+
+</button>
+
+
+
+<button
+
+className="closeModal"
+
+onClick={()=>setShowBooking(false)}
+
+>
+
+Close
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+)
+
+}
+
+
+
  </div>
 }
